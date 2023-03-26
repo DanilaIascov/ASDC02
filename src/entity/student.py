@@ -9,16 +9,16 @@ class Student:
             firstname: str = 'empty',
             lastname: str = 'empty',
             faculty: str = 'empty',
-            year_of_birth: int = 0000,
-            year_of_enrollment: int = 0000,
-            idnp: int = 0000000000000
+            year_of_birth: int = 0,
+            year_of_enrollment: int = 0,
+            idnp: int = 0
     ):
-        self.__firstname = firstname
-        self.__lastname = lastname
-        self.__idnp = idnp
-        self.__year_of_enrollment = year_of_enrollment
-        self.__year_of_birth = year_of_birth
-        self.__faculty = Faculty.get_faculty_index(faculty)
+        self.firstname = firstname
+        self.lastname = lastname
+        self.idnp = idnp
+        self.year_of_enrollment = year_of_enrollment
+        self.year_of_birth = year_of_birth
+        self.faculty = Faculty.get_faculty_index(faculty)
 
     def __copy__(self):
         copy_instance = Student(
@@ -88,7 +88,7 @@ class Student:
         self.idnp = other.idnp
 
     def __str__(self):
-        return f'firstname:{self.firstname}, ' \
+        return f'firstname: {self.firstname}, ' \
                f'lastname: {self.lastname}, ' \
                f'faculty: {Faculty.get_faculty_name(self.faculty)}, ' \
                f'year of birth: {self.year_of_birth}, ' \
@@ -119,7 +119,7 @@ class StudentSerializer:
 
     @staticmethod
     def read(filename: str | None = None, reader=None, data=None):
-        # to use a data dictionary instead of a file
+        # to use a public dictionary instead of a file
         if filename is None and data is not None:
             return [
                 Student(
