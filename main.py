@@ -30,8 +30,6 @@ if __name__ == '__main__':
     # Сортировка для неотсортированного массива и для отсортированного
     sorted_students = make_timer(quick_sort, students.copy(), key, 0, len(students) - 1, Helper.swap_with_counting,
                                  Helper.compare_with_counting)
-    # Helper.comparisons, Helper.swaps = 0, 0
-
     make_timer(quick_sort, sorted_students, key, 0, len(students) - 1, Helper.swap_with_counting,
                Helper.compare_with_counting)
 

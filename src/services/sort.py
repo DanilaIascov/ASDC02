@@ -58,12 +58,11 @@ def merge_sort(array, key, swap=Helper.swap, compare=Helper.compare):
         while compare(i < len(L)) and compare(j < len(M)):
             if compare(getattr(L[i], key) < getattr(M[j], key)):
                 array[k] = L[i]
-                swap()
                 i += 1
             else:
                 array[k] = M[j]
-                swap()
                 j += 1
+            swap()
             k += 1
 
         while compare(i < len(L)):
