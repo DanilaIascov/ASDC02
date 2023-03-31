@@ -29,9 +29,9 @@ def partition(array, key, low, high, swap, compare):
             i = i + 1
             array[i], array[j] = array[j], array[i]
             swap()
-        array[i + 1], array[high] = array[high], array[i + 1]
-        swap()
-        return i + 1
+    array[i + 1], array[high] = array[high], array[i + 1]
+    swap()
+    return i + 1
 
 
 def quick_sort(array, key, low, high, swap=Helper.swap, compare=Helper.compare):

@@ -8,7 +8,7 @@ from src.services.sort import quick_sort, Helper, merge_sort, heap_sort
 
 def prepare_data(to_shuffle: bool = False) -> list[Student]:
     reader = csv.DictReader
-    data = Student.read_from_stream(filename='public/students_data.csv', reader=reader)
+    data = Student.read_from_stream(filename='data/students_data.csv', reader=reader)
     if to_shuffle:
         shuffle(data)
     return data
@@ -26,7 +26,7 @@ def make_timer(callback, *args):
 
 if __name__ == '__main__':
     students = prepare_data(True)
-    key = 'lastname'
+    key = 'firstname'
     # Сортировка для неотсортированного массива и для отсортированного
     sorted_students = make_timer(quick_sort, students.copy(), key, 0, len(students) - 1, Helper.swap_with_counting,
                                  Helper.compare_with_counting)
@@ -37,4 +37,6 @@ if __name__ == '__main__':
     make_timer(merge_sort, sorted_students, key, Helper.swap_with_counting, Helper.compare_with_counting)
 
     make_timer(heap_sort, students.copy(), key, Helper.swap_with_counting, Helper.compare_with_counting)
-    make_timer(heap_sort, sorted_students, key, Helper.swap_with_counting, Helper.compare_with_counting)
+    res = make_timer(heap_sort, sorted_students, key, Helper.swap_with_counting, Helper.compare_with_counting)
+
+    Student.write_in_stream(res, csv.DictWriter, 'data/sorted_student.csv')

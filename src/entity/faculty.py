@@ -1,5 +1,6 @@
 class Faculty:
     faculties = [
+        'None',
         'Faculty of Biology and Geoscience',
         'Faculty of Chemistry and Chemical Technology',
         'Faculty of Law',
